@@ -1,0 +1,23 @@
+.cat-info {
+    width: 50%;
+    margin: 30px;
+    padding: 30px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 30px;
+    justify-content: start;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cat-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+}
+
+.cat-img {
+    max-width: 300px;
+}
