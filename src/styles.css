@@ -1,5 +1,5 @@
 .cat-info {
-    width: 50%;
+    max-width: 50%;
     margin: 30px;
     padding: 30px;
     display: flex;
@@ -19,5 +19,5 @@
 }
 
 .cat-img {
-    max-width: 300px;
+    max-width: 50%;
 }

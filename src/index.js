@@ -31,29 +31,29 @@ fetchBreeds()
     loader.style.display = 'none';
 
     createMarkupOptions(data);
+
     new SlimSelect({
-      select: '#single',
+      select,
     });
   })
   .catch(error => {
     Notify.failure('Oops! Something went wrong! Try reloading the page!');
+    hideLoader();
   })
   .finally(result => Loading.remove());
 
 function createMarkupOptions(arr) {
-  return arr
-    .map(({ id, name }) => {
-      console.log({ id, name });
-
-      const option = `<option value=${id}>${name}</option>`;
-      select.insertAdjacentHTML('beforeend', option);
-    })
+  const option = arr
+    .map(({ id, name }) => `<option value=${id}>${name}</option>`)
     .join('');
+  select.insertAdjacentHTML('beforeend', option);
 }
 
 select.addEventListener('change', onHandleChange);
 
 function onHandleChange(e) {
+  e.preventDefault();
+
   const breedId = e.target.value;
 
   Loading.circle('Loading data, please wait...', {
@@ -70,6 +70,7 @@ function onHandleChange(e) {
     })
     .catch(error => {
       Notify.failure('Oops! Something went wrong! Try reloading the page!');
+      hideLoader();
     })
     .finally(result => Loading.remove());
 }
@@ -84,4 +85,9 @@ function createMarkupCards(data) {
       </div>`;
 
   info.innerHTML = card;
+}
+
+function hideLoader() {
+  loader.style.display = 'none';
+  info.style.display = 'none';
 }
